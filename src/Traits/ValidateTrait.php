@@ -39,7 +39,7 @@ trait ValidateTrait
     {
         $sign = $this->getSignature($request->get('method'), $request->get('params'), config('unitpay.secret_key'));
 
-        if($request->input('SIGN') != $sign) {
+        if($request->get('params')['signature']) != $sign) {
             return false;
         }
 
